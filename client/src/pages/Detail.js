@@ -12,9 +12,9 @@ import {
 } from "../utils/actions";
 import Cart from "../components/Cart";
 import { idbPromise } from "../utils/helpers";
-import store from "../utils/store";
+// import store from "../utils/store";
 
-store.subscribe(Detail);
+// store.subscribe(Detail);
 
 function Detail() {
   const dispatch = useDispatch();
