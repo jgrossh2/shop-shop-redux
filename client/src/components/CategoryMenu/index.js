@@ -9,6 +9,8 @@ import {
 import { idbPromise } from "../../utils/helpers";
 import { useDispatch } from "react-redux";
 
+const dispatch = useDispatch();
+
 function CategoryMenu() {
   
   const [state, dispatch] = useStoreContext();
@@ -18,7 +20,7 @@ function CategoryMenu() {
   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
   useEffect(() => {
-    const dispatch = useDispatch();
+    
     // if categoryData exists or has changed from the response of useQuery, then run dispatch()
     if (categoryData) {
       // execute our dispatch function with our action object indicating the type of action and the data to set our state for categories to
@@ -40,12 +42,13 @@ function CategoryMenu() {
   }, [categoryData, loading, dispatch]);
 
   const handleClick = (id) => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     dispatch({
       type: UPDATE_CURRENT_CATEGORY,
       currentCategory: id,
     });
   };
+  
   return (
     <div>
       <h2>Choose a Category:</h2>

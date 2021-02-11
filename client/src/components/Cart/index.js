@@ -9,18 +9,22 @@ import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { useDispatch } from "react-redux";
+import store from "../../utils/store";
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+store.subsrcribe(Cart);
 
 const Cart = () => {
   const dispatch = useDispatch();
   // establishes a state variable
-  const [state, dispatch] = useStoreContext();
+  // const [state, dispatch] = useStoreContext();
   // cannot use useQuery because only meant to run when component rendered, not on a user action like button
+  const state = store.getState();
   // lazy query will execute when told
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   useEffect(() => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     async function getCart() {
       const cart = await idbPromise('cart', 'get');
     //   array of items being returned from indexedDB
@@ -43,7 +47,7 @@ const Cart = () => {
   }, [data]);
 
   function toggleCart() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     // updates the state
     dispatch({ type: TOGGLE_CART });
   }

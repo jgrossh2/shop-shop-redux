@@ -13,11 +13,19 @@ import {
 } from "../utils/actions";
 import Cart from "../components/Cart";
 import { idbPromise } from "../utils/helpers";
+import store from "../utils/store";
+
+store.subscribe(Detail);
 
 function Detail() {
-  const addToCart = () => {
-    const dispatch = useDispatch();
-    const itemInCart = cart.find((cartItem) => cartItem._id === id);
+  const dispatch = useDispatch();
+  const state = store.getState();
+  const items = state => state.cartItem
+  const cartItem = useSelector(items)
+  
+  const addToCart = state => {
+   
+    const itemInCart = Cart.find((cartItem) => cartItem._id === id);
 
     if (itemInCart) {
       dispatch({
@@ -40,7 +48,7 @@ function Detail() {
     }
   };
   const removeFromCart = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     dispatch({
       type: REMOVE_FROM_CART,
       _id: currentProduct._id,
@@ -48,17 +56,17 @@ function Detail() {
     // upon removal from cart, delete the item from IndexedDB using the `currentProduct._id` to locate what to remove
     idbPromise("cart", "delete", { ...currentProduct });
   };
-  const [state, dispatch] = useStoreContext();
+  // const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
   const [currentProduct, setCurrentProduct] = useState({});
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const { products, cart } = state;
+  // const { products, cart } = state;
 
   useEffect(() => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     // already in global store
     if (products.length) {
       setCurrentProduct(products.find((product) => product._id === id));

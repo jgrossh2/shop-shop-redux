@@ -12,7 +12,7 @@ import Nav from "./components/Nav";
 import Success from "./pages/Success"
 import { Provider } from "react-redux";
 import OrderHistory from "./pages/OrderHistory";
-import store from "../src/utils/store";
+import store from "./utils/store";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -31,9 +31,9 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <Provider>
+          <Provider store={store}>
           <Nav />
-          <Switch store={store}>
+          <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
