@@ -4,7 +4,6 @@ import { useQuery } from "@apollo/react-hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { QUERY_PRODUCTS } from "../utils/queries";
 import spinner from "../assets/spinner.gif";
-import { useStoreContext } from "../utils/GlobalState";
 import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
@@ -19,13 +18,20 @@ store.subscribe(Detail);
 
 function Detail() {
   const dispatch = useDispatch();
-  const state = store.getState();
-  const items = state => state.cartItem
-  const cartItem = useSelector(items)
-  
-  const addToCart = state => {
+  const state = useSelector(state => state);
+
+  const { id } = useParams();
+
+  const [currentProduct, setCurrentProduct] = useState({});
+
+  const { loading, data } = useQuery(QUERY_PRODUCTS);
+
+  const { products, cart } = state;
+
+  // const { products, cart } = state;
+  const addToCart = () => {
    
-    const itemInCart = Cart.find((cartItem) => cartItem._id === id);
+    const itemInCart = cart.find((cartItem) => cartItem._id === id);
 
     if (itemInCart) {
       dispatch({
@@ -56,14 +62,7 @@ function Detail() {
     // upon removal from cart, delete the item from IndexedDB using the `currentProduct._id` to locate what to remove
     idbPromise("cart", "delete", { ...currentProduct });
   };
-  // const [state, dispatch] = useStoreContext();
-  const { id } = useParams();
 
-  const [currentProduct, setCurrentProduct] = useState({});
-
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
-
-  // const { products, cart } = state;
 
   useEffect(() => {
     // const dispatch = useDispatch();
