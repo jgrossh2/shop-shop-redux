@@ -1,27 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { pluralize } from "../../utils/helpers"
-import { useStoreContext } from '../../utils/GlobalState';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
 import { idbPromise } from "../../utils/helpers";
 import { useDispatch } from "react-redux;"
-import store from "../../utils/store";
-import Cart from "../Cart";
 
-
-store.subscribe(ProductItem)
-const dispatch = useDispatch();
 
 function ProductItem(item) {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const [state, dispatch] = useStoreContext();
-  // const { cart } = state;
-const state = store.getState();
+  
+  const state = useSelector(state => state);
+  const { cart } = state;
 
 const addToCart = () => {
-  // const dispatch = useDispatch();
   // find the cart item with the matching id
-  const itemInCart = Cart.find((cartItem) => cartItem._id === _id);
+  const itemInCart = cart.find((cartItem) => cartItem._id === _id);
 
   // if there was a match, call UPDATE with a new purchase quantity
   if (itemInCart) {
