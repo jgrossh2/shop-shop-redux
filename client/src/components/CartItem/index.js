@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 // import store from "../../utils/store";
 
 // store.subscribe(CartItem);
-const dispatch = useDispatch();
+// const dispatch = useDispatch();
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
