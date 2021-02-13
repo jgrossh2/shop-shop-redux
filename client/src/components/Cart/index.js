@@ -8,11 +8,8 @@ import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { useDispatch, useSelector } from "react-redux";
-// import store from "../../utils/store";
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
-
-// store.subscribe(Cart);
 
 const Cart = () => {
   const dispatch = useDispatch();

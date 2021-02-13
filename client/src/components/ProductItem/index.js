@@ -18,7 +18,6 @@ const addToCart = () => {
 
   // if there was a match, call UPDATE with a new purchase quantity
   if (itemInCart) {
-    // const dispatch = useDispatch();
     dispatch({
       type: UPDATE_CART_QUANTITY,
       _id: _id,

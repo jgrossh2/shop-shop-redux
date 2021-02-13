@@ -7,7 +7,6 @@ import spinner from "../../assets/spinner.gif";
 import { UPDATE_PRODUCTS } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
-// store.subscribe(ProductList)
 
 function ProductList() {
   const dispatch = useDispatch();
