@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is a shopping store called "Shop-Shop". Given the starter code which is using ContextAPI in React in order to create state, this version refactors the code to use Redux instead. This application allows a user to signup, login, and then add items to their shopping cart. After items are added, the user can checkout using Stripe. After checkout is completed, the user can look at the order history and is redirected to the homepage. ONce completed, the user can logout.
+This application is a shopping store called "Shop-Shop". Given the starter code which is using ContextAPI in React in order to create state, this version refactors the code to use Redux instead. This application allows a user to signup, login, and then add items to their shopping cart. After items are added, the user can checkout using Stripe. After checkout is completed, the user can look at the order history and is redirected to the homepage. Once completed, the user can logout.
 
 ## Images 
 ![shop-shop homepage](client/public/images/homepage.png) <br>
