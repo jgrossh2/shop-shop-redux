@@ -21,7 +21,7 @@ This application is a shopping store called "Shop-Shop". Given the starter code 
 ## Questions
 jgrossh2 <br />
 [GitHub](https://github.com/jgrossh2/shop-shop-redux) <br />
-[Heroku](https://whispering-forest-86996.herokuapp.com) <br />
+[Heroku](https://shop-shop-redux1.herokuapp.com/) <br />
 Please contact <joannagrosshans2@gmail.com> for additional Information.
 
 # Technologies used
